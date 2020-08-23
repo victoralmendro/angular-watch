@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Watch } from '../../watch';
-import { TimeInterval } from 'rxjs';
+import { StopWatch } from '../../watch';
 
 @Component({
   selector: 'app-stop-watch',
@@ -8,18 +7,26 @@ import { TimeInterval } from 'rxjs';
   styleUrls: ['./stop-watch.component.css']
 })
 export class StopWatchComponent implements OnInit {
-  watch: Watch;
-  stopWatch = null;
+  stopWatch: StopWatch;
   
   canStart = true;
   canPause = false;
   canStop = false;
 
   constructor() {
-    this.watch = new Watch(0,0,0);
+    this.stopWatch = new StopWatch();
   }
 
   ngOnInit(): void {
+  }
+
+  getTime(onlyMilliseconds = false){
+    var time = this.stopWatch.getTime();
+
+    if(onlyMilliseconds)
+      return time.substr(8, 3);
+    else
+      return time.substr(0, 8);
   }
 
   start(){
@@ -27,9 +34,7 @@ export class StopWatchComponent implements OnInit {
     this.canPause = true;
     this.canStop = false;
 
-    this.stopWatch = setInterval(()=>{
-      this.watch.addSeconds(1)
-    }, 1000);
+    this.stopWatch.start();
   }
 
   pause(){
@@ -37,7 +42,7 @@ export class StopWatchComponent implements OnInit {
     this.canPause = false;
     this.canStop = true;
 
-    clearInterval(this.stopWatch);
+    this.stopWatch.pause();
   }
 
   stop(){
@@ -45,8 +50,7 @@ export class StopWatchComponent implements OnInit {
     this.canPause = false;
     this.canStop = false;
 
-    clearInterval(this.stopWatch);
-    this.watch.setTime(0,0,0);
+    this.stopWatch.stop();
   }
 
 }

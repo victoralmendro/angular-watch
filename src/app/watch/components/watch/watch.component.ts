@@ -12,8 +12,7 @@ export class WatchComponent implements OnInit {
   time: string;
 
   constructor() { 
-    this.watch = new Watch(0,0,0);
-    this.time = this.watch.getTime();
+    this.watch = new Watch();
   }
 
   ngOnInit(): void {

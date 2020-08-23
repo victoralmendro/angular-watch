@@ -1,56 +1,80 @@
+class WatchUtils{
+    static outputTime(time: number): string{
+        return (time < 10) ? "0"+time.toString() : time.toString();
+    }
+}
+
 export class Watch{
-    private hours: number;
-    private minutes: number;
-    private seconds: number;
-    private time: number = 0;
-
-    constructor(hours: number, minutes: number, seconds: number){
-        this.setTime(hours, minutes, seconds);
-    }
-
-    public setTime(hours: number, minutes: number, seconds: number){
-        this.hours = hours;
-        this.minutes = minutes;
-        this.seconds = seconds;
-
-        this.time = hours * 3600;
-        this.time += minutes * 60;
-        this.time += seconds;
-    }
+    constructor(){}
 
     public getComputerTime(){
         var time = new Date();
         
-        var h = time.getHours();
-        var hf = (h < 10) ? "0"+h : h;
+        var h = WatchUtils.outputTime(time.getHours());
+        var m = WatchUtils.outputTime(time.getMinutes());
+        var s = WatchUtils.outputTime(time.getSeconds());
 
-        var m = time.getMinutes();
-        var mf = (m < 10) ? "0"+m : m;
+        return `${h}:${m}:${s}`; 
+    }
+}
 
-        var s = time.getSeconds();
-        var sf = (s < 10) ? "0"+s : s;
+export class StopWatch{
+    private time: string = "00:00:00.00";
+    private hours: number = 0;
+    private minutes: number = 0;
+    private seconds: number = 0;
+    private milliseconds: number = 0;
 
-        return `${hf}:${mf}:${sf}`; 
+    private interval;
+
+    constructor(){
     }
 
-    public getTime(){
-        var h: string = (this.hours < 10) ? "0"+this.hours.toString() : this.hours.toString();
-        var m: string = (this.minutes < 10) ? "0"+this.minutes.toString() : this.minutes.toString();
-        var s: string = (this.seconds < 10) ? "0"+this.seconds.toString() : this.seconds.toString();
+    public getTime() : string{
+        return this.time;
+    }    
 
-        return `${h}:${m}:${s}`;
+    public start(){
+        this.interval = setInterval(()=>{this.addTime()}, 10);
     }
 
-    public addSeconds(value: number){
-        this.time += value;
-
-        var hours = this.time / 3600;
-        this.hours = parseInt(hours.toString());
-
-        var minutes = (this.time % 3600) / 60;
-        this.minutes = parseInt(minutes.toString());
-
-        var seconds = this.time % 60;
-        this.seconds = parseInt(seconds.toString());
+    public pause(){
+        clearInterval(this.interval);
     }
+
+    public stop(){
+        clearInterval(this.interval);
+
+        this.time = "00:00:00.00";
+
+        this.hours = 0;
+        this.minutes = 0;
+        this.seconds = 0;
+        this.milliseconds = 0;
+    }
+
+    private addTime(){
+        this.time = `${WatchUtils.outputTime(this.hours)}:${WatchUtils.outputTime(this.minutes)}:${WatchUtils.outputTime(this.seconds)}.${WatchUtils.outputTime(this.milliseconds)}`;
+
+        this.milliseconds++;
+
+        if(this.milliseconds == 100){
+            this.milliseconds = 0;
+            this.seconds++;
+        }
+
+        if(this.seconds == 60){
+            this.seconds=0;
+            this.minutes++;
+        }
+
+        if(this.minutes == 60){
+            this.minutes=0;
+            this.hours++;
+        }
+    }
+}
+
+export class Timer{
+
 }

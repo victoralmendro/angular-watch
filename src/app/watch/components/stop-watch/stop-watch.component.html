@@ -1,5 +1,7 @@
 <div class="time-container flex-column w-100">
-    <p class="time-text">{{watch.getTime()}}</p>
+    <p class="time-text">
+        {{getTime()}}<span class="milliseconds-text">{{getTime(true)}}</span>
+    </p>
     <div>        
         <button *ngIf="canStop" mat-fab color="primary" (click)="stop()" class="grid-item">
             <mat-icon>stop</mat-icon>

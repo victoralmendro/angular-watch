@@ -20,6 +20,10 @@ body{
     line-height: 1.1em;
 }
 
+.milliseconds-text{
+    font-size: 0.7em;
+}
+
 .d-flex{
     display: flex;
 }
