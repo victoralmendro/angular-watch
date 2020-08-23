@@ -1,0 +1,24 @@
+<div class="time-container flex-column w-100">
+    <div *ngIf="showStopWatch" id="time" class="d-flex align-items-center" (click)="onTimeClick()">
+        <p class="time-text">{{watch.getTime()}}</p>
+    </div>
+    <div *ngIf="!showStopWatch" class="d-flex align-items-center flex-column">
+        <form [formGroup]="frmStopWatch">
+            <mat-form-field class="input">
+                <mat-label>Hours</mat-label>
+                <input matInput formControlName="hours" maxlength="2"/>
+            </mat-form-field>
+            <mat-form-field class="input">
+                <mat-label>Minutes</mat-label>
+                <input matInput formControlName="minutes"/>
+            </mat-form-field>
+            <mat-form-field class="input">
+                <mat-label>Seconds</mat-label>
+                <input matInput formControlName="seconds"/>
+            </mat-form-field>
+        </form>
+        <button mat-flat-button color="primary" class="button btn-block" (click)="setTime()">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+        </button>
+    </div>
+</div>

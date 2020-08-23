@@ -1,0 +1,12 @@
+#time{
+    cursor: pointer;
+}
+
+.input{
+    width: 6em;
+}
+
+.button{
+    height: 2em;
+    font-size: 0.5em;
+}

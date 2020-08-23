@@ -2,3 +2,44 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+body{
+    font-size: 3em !important;
+}
+
+.time-container{
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-text{
+    font-size: 4em;
+    line-height: 1.1em;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+.btn-block{
+    width: 100%;
+}
+
+.w-100{
+    width: 100%;
+}

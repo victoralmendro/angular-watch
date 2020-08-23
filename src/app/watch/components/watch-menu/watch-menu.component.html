@@ -1,0 +1,28 @@
+<div class="container">
+    <mat-tab-group dynamicHeight mat-align-tabs="center" class="w-100">
+        <mat-tab> 
+            <ng-template mat-tab-label>
+                <mat-icon>watch_later</mat-icon>
+            </ng-template>    
+
+            <app-watch></app-watch>
+        </mat-tab>
+        <mat-tab> 
+            <ng-template mat-tab-label>
+                <mat-icon>timer</mat-icon>
+            </ng-template>    
+            <app-stop-watch></app-stop-watch>
+        </mat-tab>
+        <mat-tab> 
+            <ng-template mat-tab-label>
+                <mat-icon>alarm</mat-icon>
+            </ng-template>    
+            <app-timer></app-timer>
+        </mat-tab>
+        <mat-tab> 
+            <ng-template mat-tab-label>
+                <mat-icon>add_task</mat-icon>
+            </ng-template>    
+        </mat-tab>
+      </mat-tab-group>
+</div>

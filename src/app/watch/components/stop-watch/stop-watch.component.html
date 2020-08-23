@@ -1,0 +1,15 @@
+<div class="time-container flex-column w-100">
+    <p class="time-text">{{watch.getTime()}}</p>
+    <div>        
+        <button *ngIf="canStop" mat-fab color="primary" (click)="stop()" class="grid-item">
+            <mat-icon>stop</mat-icon>
+        </button>
+        <button *ngIf="canStart" mat-fab color="primary" (click)="start()" class="grid-item">
+            <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button *ngIf="canPause" mat-fab color="primary" (click)="pause()" class="grid-item">
+            <mat-icon>pause</mat-icon>
+        </button>
+    </div>
+    
+</div>
