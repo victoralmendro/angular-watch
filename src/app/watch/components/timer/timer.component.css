@@ -10,3 +10,8 @@
     height: 2em;
     font-size: 0.5em;
 }
+
+.grid-item {
+    margin-right: 1em;
+    margin-left: 1em;
+}

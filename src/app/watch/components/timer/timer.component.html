@@ -1,6 +1,6 @@
 <div class="time-container flex-column w-100">
     <div *ngIf="showStopWatch" id="time" class="d-flex align-items-center" (click)="onTimeClick()">
-        <p class="time-text">{{watch.getTime()}}</p>
+        <p class="time-text">{{getTime()}}</p>
     </div>
     <div *ngIf="!showStopWatch" class="d-flex align-items-center flex-column">
         <form [formGroup]="frmStopWatch">
@@ -10,15 +10,24 @@
             </mat-form-field>
             <mat-form-field class="input">
                 <mat-label>Minutes</mat-label>
-                <input matInput formControlName="minutes"/>
+                <input matInput formControlName="minutes" maxlength="2"/>
             </mat-form-field>
             <mat-form-field class="input">
                 <mat-label>Seconds</mat-label>
-                <input matInput formControlName="seconds"/>
+                <input matInput formControlName="seconds" maxlength="2"/>
             </mat-form-field>
         </form>
-        <button mat-flat-button color="primary" class="button btn-block" (click)="setTime()">
-            <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    </div>   
+        
+    <div>        
+        <button *ngIf="canStop" mat-fab color="primary" (click)="stop()" class="grid-item">
+            <mat-icon>stop</mat-icon>
+        </button>
+        <button *ngIf="canStart" mat-fab color="primary" (click)="start()" class="grid-item">
+            <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button *ngIf="canPause" mat-fab color="primary" (click)="pause()" class="grid-item">
+            <mat-icon>pause</mat-icon>
         </button>
     </div>
 </div>

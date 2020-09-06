@@ -2,16 +2,46 @@
     <p class="time-text">
         {{getTime()}}<span class="milliseconds-text">{{getTime(true)}}</span>
     </p>
-    <div>        
+    <div class="button-container">        
         <button *ngIf="canStop" mat-fab color="primary" (click)="stop()" class="grid-item">
             <mat-icon>stop</mat-icon>
         </button>
         <button *ngIf="canStart" mat-fab color="primary" (click)="start()" class="grid-item">
             <mat-icon>play_arrow</mat-icon>
+        </button>        
+        <button *ngIf="canLap" mat-fab color="primary" (click)="lap()" class="grid-item">
+            <mat-icon>flag</mat-icon>
         </button>
         <button *ngIf="canPause" mat-fab color="primary" (click)="pause()" class="grid-item">
             <mat-icon>pause</mat-icon>
         </button>
-    </div>
-    
+    </div>    
+    <div class="laps-container mat-elevation-z8">
+        <table *ngIf="laps.length > 0" mat-table [dataSource]="laps" style="width: 300px">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="lap">
+              <th mat-header-cell *matHeaderCellDef> Lap </th>
+              <td mat-cell *matCellDef="let element"> {{element.lap}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="elapsedTime">
+              <th mat-header-cell *matHeaderCellDef> Elapsed Time </th>
+              <td mat-cell *matCellDef="let element"> {{element.elapsedTime}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="timeText">
+              <th mat-header-cell *matHeaderCellDef> Time </th>
+              <td mat-cell *matCellDef="let element"> {{element.timeText}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>  
+    </div>   
 </div>

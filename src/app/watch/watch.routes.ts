@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WatchComponent } from './components/watch/watch.component';
 import { CommonModule } from '@angular/common';
 import { WatchMenuComponent } from './components/watch-menu/watch-menu.component';
 

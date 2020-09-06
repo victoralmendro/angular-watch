@@ -4,12 +4,12 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 
-body{
+app-root{
     font-size: 3em !important;
 }
 
 .time-container{
-    height: 500px;
+    min-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,11 +17,7 @@ body{
 
 .time-text{
     font-size: 4em;
-    line-height: 1.1em;
-}
-
-.milliseconds-text{
-    font-size: 0.7em;
+    line-height: 0.9em;
 }
 
 .d-flex{
@@ -46,4 +42,45 @@ body{
 
 .w-100{
     width: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #303030; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+@media screen and (max-width: 600px) {
+    app-root{
+        font-size: 1em !important;
+    }
+
+    .mat-fab{
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .mat-fab .mat-button-wrapper {
+        padding: 0 !important;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1024px){
+    app-root{
+        font-size: 2em !important;
+    }
 }
